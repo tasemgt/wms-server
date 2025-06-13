@@ -12,7 +12,7 @@ const giftItemRoutes = require('./routes/giftItemRoutes');
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:3001',  // specific origin instead of '*'
+  origin: process.env.FRONT_END_URL, // allow requests from the frontend URL
   credentials: true,                // allow cookies and credentials
 }));
 app.use(express.json());
