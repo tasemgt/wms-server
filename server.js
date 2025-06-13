@@ -6,6 +6,12 @@ dotenv.config();
 connectDB();
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
+
+// Start the server
+const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+// ✅ Add these timeout configurations
+server.keepAliveTimeout = 120000; // 120 seconds
+server.headersTimeout = 120000;   // 120 seconds
