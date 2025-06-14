@@ -8,10 +8,6 @@ const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
 const twilioPhone = process.env.TWILIO_PHONE_NUMBER;
 
-const TWILIO_ACCOUNT_SID='ACc6cca66eac6a1b1176cd3bdb8d64dc9b'
-const TWILIO_AUTH_TOKEN='408404eabb2aa967111db1c8df94842c'
-const TWILIO_PHONE_NUMBER='+447453488996'
-
 // console.log(`Twilio Account SID: ${accountSid}`);
 
 const client = new twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
@@ -28,4 +24,4 @@ function sendSMS(to, message) {
 }
 
 // Example usage
-sendSMS('+447551119360', 'Hello from Node.js and Twilio!');
+// sendSMS('+447551119360', 'Hello from Node.js and Twilio!');
