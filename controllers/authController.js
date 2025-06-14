@@ -43,12 +43,12 @@ exports.loginUser = async (req, res) => {
     res.cookie("token", token, {
       httpOnly: true,
       secure: true, //process.env.NODE_ENV === "production",
-      sameSite: 'lax', // or "strict"
+      sameSite: 'none', // or "strict"
       maxAge: 1000 * 60 * 60 * 24, // 1 day
     })
 
     
-    res.json({ token, user: { id: user._id, name: user.name, role: user.role } }); 
+    res.json({ token, user: { id: user._id, name: user.name, role: user.role, token } }); 
 
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
