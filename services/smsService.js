@@ -24,4 +24,4 @@ function sendSMS(to, message) {
 }
 
 // Example usage
-// sendSMS('+447551119360', 'Hello from Node.js and Twilio!');
+// sendSMS('+', 'Hello from Node.js and Twilio!');
