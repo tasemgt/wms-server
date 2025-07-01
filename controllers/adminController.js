@@ -1,6 +1,7 @@
 const Guest = require('../models/Guest');
 const User = require('../models/User');
-const { sendApprovalMessage } = require('../services/whatsappService');
+const { sendSMS } = require('../services/sms_service');
+// const { sendApprovalMessage } = require('../services/whatsappService');
 
 // Dashboard summary
 exports.getDashboardStats = async (req, res) => {
@@ -68,10 +69,13 @@ exports.approveGuest = async (req, res) => {
     guest.approvedBy = req.user.id;
     await guest.save();
 
-    guest.phone = guest.phone.split('+')[1]; // Remove '+' from phone number for WhatsApp API
+    // guest.phone = guest.phone.split('+')[1]; // Remove '+' from phone number for WhatsApp API
 
-    // Send WhatsApp message with profile URL
-    await sendApprovalMessage(guest);
+    const message = 
+    `#MIFA25 \n\nHi ${guest.name}, you are graciously welcomed to join our special day. ✨ \nYour Guest ID is: ${guest.guestId} \nYour Profile & E-card 👉 ${guest.profileUrl} \nWe’re thrilled to have you celebrate this unforgettable moment with us! \nMike & Faith 💕`;
+
+    // Send SMS with profile URL
+    await sendSMS(guest.phone, message);
 
     res.json({ message: 'Guest approved', guest });
   } catch (err) {
